@@ -27,6 +27,11 @@ jobs:
       
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Archive Gradle build
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-output
+        path: build 
       
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v6.2
@@ -35,4 +40,4 @@ jobs:
         registry: docker.io
         username: ${{ secrets.DOCKERHUB_USERNAME  }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
+  
