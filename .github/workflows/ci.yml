@@ -28,11 +28,11 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
       
-    - name: Build and Push docker image
-      uses: cloudposse/github-action-docker-build-push@main
+    - name: Build and Push Docker Image
+      uses: mr-smithers-excellent/docker-build-push@v4
       with:
-        image_name: j4ro123/github-ci-cd
-        registry: registry.hub.docker.com
-        login: "${{ secrets.DOCKERHUB_USERNAME }}"
-        password: "${{ secrets.DOCKERHUB_PASSWORD }}"
+        image: j4ro123/github-ci-cd
+        registry: docker.io
+        username: ${{ secrets.DOCKERHUB_USERNAME  }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
